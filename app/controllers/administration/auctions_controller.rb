@@ -1,6 +1,7 @@
 class Administration::AuctionsController < Administration::CommonController
 
   def index
+    @auctions = Auction.all
   end
 
   def show

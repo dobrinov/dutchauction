@@ -1,6 +1,7 @@
 class Administration::PurchasesController < Administration::CommonController
 
   def index
+    @purchases = Purchase.all
   end
 
   def show

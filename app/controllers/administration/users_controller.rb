@@ -1,6 +1,7 @@
 class Administration::UsersController < Administration::CommonController
 
   def index
+    @users = User.all
   end
 
   def show
