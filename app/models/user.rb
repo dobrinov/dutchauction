@@ -4,6 +4,9 @@ class User < ActiveRecord::Base
   has_secure_password
 
   # Associations
+  has_many :auction_participations
+  has_many :auctions, :through => :auction_participations
+
   # Validations
   # Class methods
   # Instance methods

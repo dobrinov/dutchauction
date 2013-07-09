@@ -1,9 +1,9 @@
-class Purchase < ActiveRecord::Base
-  attr_accessible :amount
+class AuctionParticipation < ActiveRecord::Base
 
   # Associations
   belongs_to :auction
-
+  belongs_to :user
+  
   # Validations
   # Class methods
   # Instance methods
