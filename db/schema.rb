@@ -21,12 +21,14 @@ ActiveRecord::Schema.define(:version => 20130709221319) do
   create_table "auctions", :force => true do |t|
     t.string   "title"
     t.string   "description"
+    t.string   "state"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
 
   create_table "purchases", :force => true do |t|
     t.integer  "amount"
+    t.string   "state"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -36,6 +38,7 @@ ActiveRecord::Schema.define(:version => 20130709221319) do
     t.string   "password_digest"
     t.string   "name"
     t.string   "surname"
+    t.string   "state"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
   end
