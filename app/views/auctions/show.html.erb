@@ -15,10 +15,35 @@
   <li>Time for purchase:         <strong><%= @auction.time_for_purchase %> minutes</strong></li>
 </ul>
 
+<ul>
+  <li>Registered users:          <strong><%= @auction.users.count %></strong></li>
+</ul>
+
+<ul>
+  <li>Active users:              <strong>?</strong></li>
+  <li>Inactive users:            <strong>?</strong></li>
+</ul>
+
 <% if current_user.registered_for?(@auction) %>
-  User is registered for auction
+
+  <% if @auction.scheduled? %>
+    <%= button_tag 'Waiting for auction start ...', disabled: true %>
+  <% elsif @auction.running? %>
+    <%= link_to 'Buy', new_auction_purchase_path(@auction) %>
+  <% elsif @auction.paused? %>
+    <%= button_tag 'Waiting to resume auction ...', disabled: true %>
+  <% elsif @auction.stopped? %>
+    <%= button_tag 'Auction was stopped ...', disabled: true %>
+  <% elsif @auction.finished? %>
+    <%= button_tag 'Auction has finished ...', disabled: true %>
+  <% elsif @auction.new? %>
+    <%# Do not show anything %>
+  <% end %>
+
 <% else %>
-  <%= form_for @auction_participation, url: auction_auction_participation_path(@auction) do |f| %>
-    <%= f.submit 'Register for auction' %>
+    <% if @auction.scheduled? %>
+    <%= form_for AuctionParticipation.new, url: auction_auction_participation_path(@auction) do |f| %>
+      <%= f.submit 'Register for auction' %>
+    <% end %>
   <% end %>
 <% end %>
