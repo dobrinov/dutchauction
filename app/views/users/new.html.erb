@@ -1,1 +1,32 @@
-new.html.erb
+<h1>Sign up</h1>
+
+<%= form_for @user, url: user_path do |f| %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <br/><br/>
+
+  <%= f.label :surname %>
+  <%= f.text_field :surname %>
+
+  <br/><br/>
+
+  <%= f.label :email %>
+  <%= f.email_field :email %>
+
+  <br/><br/>
+
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+
+  <br/><br/>
+
+  <%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation %>
+
+  <br/><br/>
+
+  <%= f.submit 'Sign up' %>
+
+<% end %>
