@@ -5,6 +5,7 @@ class Administration::AuctionsController < Administration::CommonController
   end
 
   def show
+    @auction = Auction.find(params[:id])
   end
 
   def new
@@ -29,6 +30,36 @@ class Administration::AuctionsController < Administration::CommonController
   end
 
   def destroy
+  end
+
+  def schedule
+    @auction = Auction.find(params[:auction_id])
+    @auction.schedule
+    redirect_to administration_auction_path(@auction)
+  end
+
+  def start
+    @auction = Auction.find(params[:auction_id])
+    @auction.start
+    redirect_to administration_auction_path(@auction)
+  end
+
+  def stop
+    @auction = Auction.find(params[:auction_id])
+    @auction.stop
+    redirect_to administration_auction_path(@auction)
+  end
+
+  def pause
+    @auction = Auction.find(params[:auction_id])
+    @auction.pause
+    redirect_to administration_auction_path(@auction)
+  end
+
+  def finish
+    @auction = Auction.find(params[:auction_id])
+    @auction.finish
+    redirect_to administration_auction_path(@auction)
   end
 
 end

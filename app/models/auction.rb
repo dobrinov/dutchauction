@@ -26,7 +26,7 @@ class Auction < ActiveRecord::Base
     end
 
     event :start do
-      transition [:paused, :scheduled] => :running
+      transition [:stopped, :paused, :scheduled] => :running
     end
 
     event :pause do

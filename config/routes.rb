@@ -12,7 +12,15 @@ Dutchauction::Application.routes.draw do
 
   namespace :administration do
     resources :users
-    resources :auctions
+
+    resources :auctions do
+      put :schedule
+      put :start
+      put :stop
+      put :pause
+      put :finish
+    end
+
     resources :purchases
   end
 

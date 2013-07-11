@@ -1,1 +1,34 @@
-show.html.erb
+<h1><%= @auction.title %></h1>
+<p><%= @auction.description %></p>
+
+<ul>
+  <li>Auction starts:            <strong><%= @auction.start_datetime %></strong></li>
+  <li>Auction status:            <strong><%= @auction.state %></strong></li>
+  <li>Store price:               <strong><%= @auction.store_price %> BGN</strong></li>
+  <li>Start price:               <strong><%= @auction.start_price %> BGN</strong></li>
+  <li>End price:                 <strong><%= @auction.end_price %> BGN</strong></li>
+  <li>Current price:             <strong><%= @auction.current_price %> BGN</strong></li>
+  <li>Start quantity:            <strong><%= @auction.start_quantity %></strong></li>
+  <li>Current quantity:          <strong><%= @auction.current_quantity %></strong></li>
+  <li>Minimum users per product: <strong><%= @auction.minimum_users_per_product %></strong></li>
+  <li>Maximum users per product: <strong><%= @auction.maximum_users_per_product %></strong></li>
+  <li>Time for purchase:         <strong><%= @auction.time_for_purchase %> minutes</strong></li>
+</ul>
+
+<ul>
+  <li>Registered users:          <strong><%= @auction.users.count %></strong></li>
+</ul>
+
+<ul>
+  <li>Active users:              <strong>?</strong></li>
+  <li>Inactive users:            <strong>?</strong></li>
+</ul>
+
+<% @auction.state_events.each do |state| %>
+  <%= form_for [:administration, @auction],
+                url: url_for(controller: 'auctions', action: state, auction_id: @auction.id),
+                method: :put do |f|
+  %>
+    <%= f.submit state %>
+  <% end %>
+<% end %>
