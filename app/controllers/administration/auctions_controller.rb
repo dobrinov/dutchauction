@@ -44,21 +44,27 @@ class Administration::AuctionsController < Administration::CommonController
     redirect_to administration_auction_path(@auction)
   end
 
-  def stop
+  def wait_for_active_users
     @auction = Auction.find(params[:auction_id])
-    @auction.stop
+    @auction.wait_for_active_users
     redirect_to administration_auction_path(@auction)
   end
 
-  def pause
+  def reach_lowest_price
     @auction = Auction.find(params[:auction_id])
-    @auction.pause
+    @auction.reach_lowest_price
     redirect_to administration_auction_path(@auction)
   end
 
-  def finish
+  def terminate
     @auction = Auction.find(params[:auction_id])
-    @auction.finish
+    @auction.terminate
+    redirect_to administration_auction_path(@auction)
+  end
+
+  def sell_out
+    @auction = Auction.find(params[:auction_id])
+    @auction.sell_out
     redirect_to administration_auction_path(@auction)
   end
 

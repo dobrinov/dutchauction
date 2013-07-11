@@ -18,9 +18,10 @@ Dutchauction::Application.routes.draw do
     resources :auctions do
       put :schedule
       put :start
-      put :stop
-      put :pause
-      put :finish
+      put :wait_for_active_users
+      put :reach_lowest_price
+      put :terminate
+      put :sell_out
     end
 
     resources :purchases

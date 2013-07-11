@@ -17,28 +17,33 @@ class Auction < ActiveRecord::Base
     state :new
     state :scheduled
     state :running
-    state :paused
-    state :stopped
-    state :finished
+    state :waiting_for_active_users
+    state :reached_lowest_price
+    state :terminated
+    state :sold_out
 
     event :schedule do
       transition [:new] => :scheduled
     end
 
     event :start do
-      transition [:stopped, :paused, :scheduled] => :running
+      transition [:waiting_for_active_users, :scheduled] => :running
     end
 
-    event :pause do
-      transition [:running] => :paused
+    event :wait_for_active_users do
+      transition [:running] => :waiting_for_active_users
     end
 
-    event :stop do
-      transition [:running] => :stopped
+    event :reach_lowest_price do
+      transition [:running] => :reached_lowest_price
     end
 
-    event :finish do
-      transition [:paused, :running] => :finished
+    event :terminate do
+      transition [:running] => :terminate
+    end
+
+    event :sell_out do
+      transition [:running] => :sold_out
     end
 
   end
