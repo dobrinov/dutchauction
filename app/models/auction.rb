@@ -26,6 +26,10 @@ class Auction < ActiveRecord::Base
       transition [:new] => :scheduled
     end
 
+    event :unschedule do
+      transition [:scheduled] => :new
+    end
+
     event :start do
       transition [:waiting_for_active_users, :scheduled] => :running
     end

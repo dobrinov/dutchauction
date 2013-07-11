@@ -17,6 +17,7 @@ Dutchauction::Application.routes.draw do
 
     resources :auctions do
       put :schedule
+      put :unschedule
       put :start
       put :wait_for_active_users
       put :reach_lowest_price

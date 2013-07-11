@@ -16,12 +16,12 @@
 </ul>
 
 <ul>
-  <li>Registered users:          <strong><%= @auction.users.count %></strong></li>
+  <li>Registered users: <strong><%= @auction.users.count %></strong></li>
 </ul>
 
 <ul>
-  <li>Active users:              <strong>?</strong></li>
-  <li>Inactive users:            <strong>?</strong></li>
+  <li>Active users:   <strong>?</strong></li>
+  <li>Inactive users: <strong>?</strong></li>
 </ul>
 
 <% if current_user.registered_for?(@auction) %>

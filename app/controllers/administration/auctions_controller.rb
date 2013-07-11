@@ -38,6 +38,12 @@ class Administration::AuctionsController < Administration::CommonController
     redirect_to administration_auction_path(@auction)
   end
 
+  def unschedule
+    @auction = Auction.find(params[:auction_id])
+    @auction.unschedule
+    redirect_to administration_auction_path(@auction)
+  end
+
   def start
     @auction = Auction.find(params[:auction_id])
     @auction.start
