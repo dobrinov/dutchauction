@@ -36,5 +36,8 @@
   <%= f.text_field :time_for_purchase %>
   <br/><br/>
 
+  <%= f.label           :start_datetime %>
+  <%= f.datetime_select :start_datetime %>
+
   <%= f.submit :create %>
 <% end %>

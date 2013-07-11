@@ -3,8 +3,8 @@ class Auction < ActiveRecord::Base
                   :start_price, :end_price, :current_price, :store_price,
                   :start_quantity, :current_quantity,
                   :minimum_users_per_product, :maximum_users_per_product,
-                  :time_for_purchase # in seconds
-
+                  :time_for_purchase, # in seconds
+                  :start_datetime
   # Associations
   has_many :purchases
 
@@ -43,7 +43,17 @@ class Auction < ActiveRecord::Base
 
   end
 
+  # Callbacks
+  before_save :default_values
+
   # Validations
   # Class methods
   # Instance methods
+
+  private 
+
+  def default_values
+    self.current_price ||= self.start_price
+    self.current_quantity ||= self.start_quantity
+  end
 end
