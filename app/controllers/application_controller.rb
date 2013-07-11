@@ -15,6 +15,10 @@ class ApplicationController < ActionController::Base
     redirect_to new_session_path unless logged_in?
   end
 
+  def log_in(user)
+    session[:current_user_id] = user.id
+  end
+
   def logged_in?
     current_user.present?
   end

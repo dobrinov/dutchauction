@@ -11,6 +11,7 @@ class UsersController < ApplicationController
     @user = User.new params[:user]
 
     if @user.save
+      log_in(@user)
       redirect_to user_path
     else
       flash.now[:error] = 'Invalid form data'
