@@ -5,7 +5,9 @@ Dutchauction::Application.routes.draw do
   end
 
   resource  :session, only: [:new, :create, :destroy]
-  resources :auctions, only: [:index, :show]
+  resources :auctions, only: [:index, :show] do
+    resource  :auction_participation, only: [:create]
+  end
 
   namespace :administration do
     resources :users

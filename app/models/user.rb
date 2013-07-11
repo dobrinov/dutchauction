@@ -42,4 +42,8 @@ class User < ActiveRecord::Base
   # Validations
   # Class methods
   # Instance methods
+
+  def registered_for?(auction)
+    self.auctions.include? auction
+  end
 end
