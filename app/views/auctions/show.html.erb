@@ -29,7 +29,9 @@
   <% if @auction.scheduled? %>
     <%= button_tag 'Waiting for auction start ...', disabled: true %>
   <% elsif @auction.running? %>
-    <%= link_to 'Buy', new_auction_purchase_path(@auction) %>
+    <%= form_for Purchase.new, url: reserve_auction_purchase_path(@auction), method: :put do |f| %>
+      <%= f.submit 'Buy' %>
+    <% end %>
   <% elsif @auction.paused? %>
     <%= button_tag 'Waiting to resume auction ...', disabled: true %>
   <% elsif @auction.stopped? %>
@@ -41,7 +43,7 @@
   <% end %>
 
 <% else %>
-    <% if @auction.scheduled? %>
+  <% if @auction.scheduled? %>
     <%= form_for AuctionParticipation.new, url: auction_auction_participation_path(@auction) do |f| %>
       <%= f.submit 'Register for auction' %>
     <% end %>
