@@ -1,5 +1,9 @@
 class Auction < ActiveRecord::Base
-  attr_accessible :title, :description
+  attr_accessible :title, :description,
+                  :start_price, :end_price, :current_price, :store_price,
+                  :start_quantity, :current_quantity,
+                  :minimum_users_per_product, :maximum_users_per_product,
+                  :time_for_purchase # in seconds
 
   # Associations
   has_many :purchases
