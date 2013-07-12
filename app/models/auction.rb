@@ -12,9 +12,9 @@ class Auction < ActiveRecord::Base
   has_many :users, :through => :auction_participations
 
   # States
-  state_machine :state, :initial => :new do
+  state_machine :state, :initial => :unscheduled do
 
-    state :new
+    state :unscheduled
     state :scheduled
     state :running
     state :waiting_for_active_users
@@ -23,11 +23,11 @@ class Auction < ActiveRecord::Base
     state :sold_out
 
     event :schedule do
-      transition [:new] => :scheduled
+      transition [:unscheduled] => :scheduled
     end
 
     event :unschedule do
-      transition [:scheduled] => :new
+      transition [:scheduled] => :unscheduled
     end
 
     event :start do
