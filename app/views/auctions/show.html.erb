@@ -54,6 +54,13 @@
     <% end %>
   <% end %>
 <% else %>
-  <%= button_to 'Sign in', new_session_path, method: 'get' %>
-  <%= button_to 'Sign up', new_user_path, method: 'get' %>
+  <%= form_tag new_session_path, method: 'get' do %>
+    <%= hidden_referrer_input_tag %>
+    <%= button_tag 'Sign in' %>
+  <% end %>
+
+  <%= form_tag new_user_path, method: 'get' do %>
+    <%= hidden_referrer_input_tag %>
+    <%= button_tag 'Sign up' %>
+  <% end %>
 <% end %>

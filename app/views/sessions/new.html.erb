@@ -2,6 +2,8 @@
 
 <%= form_tag session_path do %>
 
+  <%= hidden_referrer_input_tag %>
+
   <%= label_tag :email %>
   <%= email_field_tag :email, params[:email] %>
 

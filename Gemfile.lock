@@ -72,6 +72,7 @@ GEM
     rake (10.0.4)
     rdoc (3.12.2)
       json (~> 1.4)
+    redirectr (0.0.8)
     ruby-graphviz (1.0.8)
     sass (3.2.9)
     sass-rails (3.2.6)
@@ -102,6 +103,7 @@ DEPENDENCIES
   bcrypt-ruby (~> 3.0.0)
   jquery-rails
   rails (= 3.2.13)
+  redirectr (~> 0.0.8)
   ruby-graphviz
   sass-rails (~> 3.2.3)
   sqlite3

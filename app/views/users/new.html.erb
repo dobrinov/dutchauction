@@ -2,6 +2,8 @@
 
 <%= form_for @user, url: user_path do |f| %>
 
+  <%= hidden_referrer_input_tag %>
+
   <%= f.label :name %>
   <%= f.text_field :name %>
 
