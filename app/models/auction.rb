@@ -4,7 +4,8 @@ class Auction < ActiveRecord::Base
                   :start_quantity, :current_quantity,
                   :minimum_users_per_product, :maximum_users_per_product,
                   :time_for_purchase, # in seconds
-                  :start_datetime
+                  :start_datetime,
+                  :active_users_timeout
   # Associations
   has_many :purchases
 

@@ -1,0 +1,14 @@
+harry_potter_book_auction:
+  id:                        1
+  title:                     Harry Potter and the Goblet of Fire
+  description:               An auction of the famous book from the Harry Potter series
+  start_price:               20
+  end_price:                 10
+  store_price:               21
+  start_quantity:            5
+  minimum_users_per_product: 5
+  maximum_users_per_product: 10
+  time_for_purchase:         180
+  start_datetime:            <%= Time.now + 1.minute %>
+  active_users_timeout:      300
+  state:                     scheduled

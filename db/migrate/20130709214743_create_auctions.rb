@@ -12,6 +12,7 @@ class CreateAuctions < ActiveRecord::Migration
       t.integer  :minimum_users_per_product
       t.integer  :maximum_users_per_product
       t.integer  :time_for_purchase
+      t.integer  :active_users_timeout
       t.datetime :start_datetime
 
       t.string :state
