@@ -14,7 +14,7 @@
   <li>Current quantity:          <strong><%= @auction.current_quantity %></strong></li>
   <li>Minimum users per product: <strong><%= @auction.minimum_users_per_product %></strong></li>
   <li>Maximum users per product: <strong><%= @auction.maximum_users_per_product %></strong></li>
-  <li>Time for purchase:         <strong><%= @auction.time_for_purchase %> minutes</strong></li>
+  <li>Time for purchase:         <strong><%= @auction.time_for_purchase %> seconds</strong></li>
 </ul>
 
 <ul>
@@ -26,30 +26,34 @@
   <li>Inactive users: <strong>?</strong></li>
 </ul>
 
-<% if current_user.registered_for?(@auction) %>
-
-  <% if @auction.scheduled? %>
-    <%= button_tag 'Waiting for auction start ...', disabled: true %>
-  <% elsif @auction.running? %>
-    <%= form_for Purchase.new, url: reserve_auction_purchase_path(@auction), method: :put do |f| %>
-      <%= f.submit 'Buy' %>
+<% if logged_in? %>
+  <% if current_user.registered_for?(@auction) %>
+    <% if @auction.scheduled? %>
+      <%= button_tag 'Waiting for auction start ...', disabled: true %>
+    <% elsif @auction.running? %>
+      <%= form_for Purchase.new, url: reserve_auction_purchase_path(@auction), method: :put do |f| %>
+        <%= f.submit 'Buy' %>
+      <% end %>
+    <% elsif @auction.waiting_for_active_users? %>
+      <%= button_tag 'Waiting for enough active users ...', disabled: true %>
+    <% elsif @auction.reached_lowest_price? %>
+      <%= button_tag 'Auction terminated due to reaching the lowest price', disabled: true %>
+    <% elsif @auction.sold_out? %>
+      <%= button_tag 'Auction closed', disabled: true %>
+    <% elsif @auction.terminated? %>
+      <%= button_tag 'Auction terminated', disabled: true %>
+    <% elsif @auction.unscheduled? %>
+      <%# Do not show anything %>
     <% end %>
-  <% elsif @auction.waiting_for_active_users? %>
-    <%= button_tag 'Waiting for enough active users ...', disabled: true %>
-  <% elsif @auction.reached_lowest_price? %>
-    <%= button_tag 'Auction terminated due to reaching the lowest price', disabled: true %>
-  <% elsif @auction.sold_out? %>
-    <%= button_tag 'Auction closed', disabled: true %>
-  <% elsif @auction.terminated? %>
-    <%= button_tag 'Auction terminated', disabled: true %>
-  <% elsif @auction.unscheduled? %>
-    <%# Do not show anything %>
-  <% end %>
 
+  <% else %>
+    <% if @auction.scheduled? %>
+      <%= form_for AuctionParticipation.new, url: auction_auction_participation_path(@auction) do |f| %>
+        <%= f.submit 'Register for auction' %>
+      <% end %>
+    <% end %>
+  <% end %>
 <% else %>
-  <% if @auction.scheduled? %>
-    <%= form_for AuctionParticipation.new, url: auction_auction_participation_path(@auction) do |f| %>
-      <%= f.submit 'Register for auction' %>
-    <% end %>
-  <% end %>
+  <%= button_to 'Sign in', new_session_path, method: 'get' %>
+  <%= button_to 'Sign up', new_user_path, method: 'get' %>
 <% end %>

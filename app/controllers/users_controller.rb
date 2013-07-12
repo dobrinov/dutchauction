@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  before_filter :require_login, only: ['show', 'edit', 'update']
+
   def show
   end
 

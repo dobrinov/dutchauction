@@ -1,4 +1,4 @@
-class PurchasesController < ApplicationController
+class PurchasesController < AuthenticationController
 
   # POST
   def reserve
