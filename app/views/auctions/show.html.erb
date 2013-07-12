@@ -2,7 +2,9 @@
 <p><%= @auction.description %></p>
 
 <ul>
-  <li>Auction starts:            <strong><%= @auction.start_datetime %></strong></li>
+  <% unless @auction.unscheduled? %>
+    <li>Auction starts:            <strong><%= @auction.start_datetime %></strong></li>
+  <% end %>
   <li>Auction status:            <strong><%= @auction.state %></strong></li>
   <li>Store price:               <strong><%= @auction.store_price %> BGN</strong></li>
   <li>Start price:               <strong><%= @auction.start_price %> BGN</strong></li>
