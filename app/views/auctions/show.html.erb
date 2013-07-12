@@ -40,7 +40,7 @@
     <%= button_tag 'Auction closed', disabled: true %>
   <% elsif @auction.terminated? %>
     <%= button_tag 'Auction terminated', disabled: true %>
-  <% elsif @auction.new? %>
+  <% elsif @auction.unscheduled? %>
     <%# Do not show anything %>
   <% end %>
 
