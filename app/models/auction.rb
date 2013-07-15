@@ -60,6 +60,12 @@ class Auction < ActiveRecord::Base
   # Class methods
   # Instance methods
 
+  def self.start_scheduled_auctions
+    auctions = Auction.where(["start_datetime <= ? AND state = ?", Time.now, 'unscheduled'])
+
+    auctions.each { |auction| auction.schedule }
+  end
+
   private 
 
   def default_values

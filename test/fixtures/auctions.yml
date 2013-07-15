@@ -13,4 +13,4 @@ harry_potter_book_auction:
   time_for_purchase:         180
   start_datetime:            <%= Time.now + 1.minute %>
   active_users_timeout:      300
-  state:                     scheduled
+  state:                     unscheduled
