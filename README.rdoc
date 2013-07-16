@@ -3,6 +3,6 @@
 Cron
 1. Install system gem
 2. Update schedule.rb
-3. Run whenever --update-cron dutchauction
-4. Add rbenv env to cron file manualy (the example is for development environment)
-* * * * * /bin/bash -l -c 'export PATH="$HOME/.rbenv/bin:$PATH" ; eval "$(rbenv init -)"; cd /home/deyan/Projects/dutchauction && script/rails runner -e development '\''Auction.start_scheduled_auctions'\'''
+3. Setup rbenv in .profile (Ubuntu) PATH="$HOME/.rbenv/bin:$PATH"; eval "$(rbenv init -) 
+4.1 whenever --update-crontab dutchauction --set environment='development' (for development)
+4.1 whenever --update-crontab dutchauction (for production)
