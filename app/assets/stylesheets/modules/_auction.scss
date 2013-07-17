@@ -1,0 +1,13 @@
+.auction-state {
+  padding: 10px;
+  margin: 10px 0px;
+  font-size: 16px;
+
+  &.is-unscheduled              { outline: 1px dotted gray;  color: gray; }
+  &.is-scheduled                { outline: 1px dotted gray;  color: gray; }
+  &.is-running                  { outline: 1px dotted green; color: green; }
+  &.is-waiting-for-active-users { outline: 1px dotted blue;  color: blue; }
+  &.is-reached-lowest-price     { outline: 1px dotted red;   color: red; }
+  &.is-terminated               { outline: 1px dotted red;   color: red; }
+  &.is-sold-out                 { outline: 1px dotted red;   color: red; }
+}

@@ -1,0 +1,3 @@
+<%= content_tag :div, class: "auction-state is-#{auction.state.dasherize}" do %>
+  <%= state_message_for(auction) %>
+<% end %>

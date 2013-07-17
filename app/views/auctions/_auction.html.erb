@@ -4,7 +4,6 @@
   <% unless auction.unscheduled? %>
     <li class="start-date">Auction starts: <strong><%= auction.start_datetime %></strong></li>
   <% end %>
-  <li class="status">Auction status: <strong><%= auction.state %></strong></li>
   <li class="store-price">Store price: <strong><%= auction.store_price %> BGN</strong></li>
   <li class="start-price">Start price: <strong><%= auction.start_price %> BGN</strong></li>
   <li class="end-price">End price: <strong><%= auction.end_price %> BGN</strong></li>
