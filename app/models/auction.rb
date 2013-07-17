@@ -12,6 +12,9 @@ class Auction < ActiveRecord::Base
   has_many :auction_participations
   has_many :users, :through => :auction_participations
 
+  # Callbacks
+  after_save :broadcast
+
   # States
   state_machine :state, :initial => :unscheduled do
 
@@ -44,7 +47,7 @@ class Auction < ActiveRecord::Base
     end
 
     event :terminate do
-      transition [:running] => :terminate
+      transition [:running] => :terminated
     end
 
     event :sell_out do
@@ -64,6 +67,13 @@ class Auction < ActiveRecord::Base
     auctions = Auction.where(["start_datetime <= ? AND state = ?", Time.now, 'scheduled'])
 
     auctions.each { |auction| auction.start }
+  end
+
+  def broadcast
+    message = { :channel => "/auction/1", :data => self }
+    uri     = URI.parse("http://localhost:9292/faye")
+
+    Net::HTTP.post_form(uri, :message => message.to_json)
   end
 
   private 

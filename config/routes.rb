@@ -7,7 +7,7 @@ Dutchauction::Application.routes.draw do
   resource  :session, only: [:new, :create, :destroy]
   resources :auctions, only: [:index, :show] do
     resource  :purchase, only: [:new, :create, :show] do
-      put :reserve
+      post :reserve
     end
     resource  :auction_participation, only: [:create]
   end

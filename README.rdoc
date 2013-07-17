@@ -1,8 +1,19 @@
 == Dutch Auctions Application
 
-Cron
-1. Install system gem
+Whenever
+1. gem install whenever
 2. Update schedule.rb
 3. Setup rbenv in .profile (Ubuntu) PATH="$HOME/.rbenv/bin:$PATH"; eval "$(rbenv init -) 
 4.1 whenever --update-crontab dutchauction --set environment='development' (for development)
 4.1 whenever --update-crontab dutchauction (for production)
+
+Thin
+1. gem install thin
+
+Faye
+1. gem install faye
+
+TODO:
+1. Do the subscriptions only on the auction pages
+2. Include the faye script only on the auction pages
+3. Invent a way to update the html of the page

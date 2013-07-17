@@ -6,7 +6,11 @@ class AuctionsController < ApplicationController
 
   def show
     @auction = Auction.find(params[:id])
-    @auction_participation =  AuctionParticipation.new
+
+    respond_to do |format|
+      format.html {}
+      format.js   {}
+    end
   end
 
 end

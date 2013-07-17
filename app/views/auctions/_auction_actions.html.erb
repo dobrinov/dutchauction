@@ -1,0 +1,32 @@
+<ul class="auction-actions">
+  <% if logged_in? %>
+    <% if current_user.registered_for?(auction) %> <%# Add user active in auction check %>
+      <% if true %> <%# Add user active in auction check %>
+        <% if auction.scheduled? %>
+          <li><%= button_to 'Waiting for auction to start...', '#', disabled: true %></li>
+        <% elsif auction.running? %>
+          <li><%= button_to 'Buy', reserve_auction_purchase_path(auction) %></li>
+        <% elsif auction.waiting_for_active_users? %>
+          <li><%= button_to 'Waiting for enough active users...', '#', disabled: true %></li>
+        <% elsif auction.reached_lowest_price? %>
+          <li><%= button_to 'Auction closed. Reached lowest price.', '#', disabled: true %></li>
+        <% elsif auction.sold_out? %>
+          <li><%= button_to 'Auction closed. Products sold out.', '#', disabled: true %></li>
+        <% elsif auction.terminated? %>
+          <li><%= button_to 'Auction terminated.', '#', disabled: true %></li>
+        <% elsif auction.unscheduled? %>
+          <%# Do not show anything %>
+        <% end %>
+      <% else %>
+        <li><%= button_to 'Your participation has ended', '', disabled: true %></li>
+      <% end %>
+    <% else %>
+      <% if auction.scheduled? %>
+        <li><%= button_to 'Register for auction', auction_auction_participation_path(auction) %></li>
+      <% end %>
+    <% end %>
+  <% else %>
+    <li><%= link_to 'Sign in', new_session_path(referrer_param => current_path) %></li>
+    <li><%= link_to 'Sign up', new_user_path(referrer_param => current_path) %></li>
+  <% end %>  
+</ul>

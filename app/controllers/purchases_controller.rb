@@ -13,15 +13,15 @@ class PurchasesController < AuthenticationController
   def payment_selection
   end
 
-  # POST
+  # PUT
   def select_payment
   end
 
-  # POST - redirect to epay
+  # POST?PUT - redirect to epay
   def epay
   end
 
-  # POST - redirect to gate2shop
+  # POST?PUT - redirect to gate2shop
   def gate2shop
   end
 

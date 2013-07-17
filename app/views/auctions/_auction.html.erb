@@ -1,0 +1,20 @@
+<ul class="auction" data-id="<%= auction.id %>" data-url="<%= current_path %>">
+  <li class="title"><h1><%= auction.title %></h1></li>
+  <li class="description"><%= auction.description %></li>
+  <% unless auction.unscheduled? %>
+    <li class="start-date">Auction starts: <strong><%= auction.start_datetime %></strong></li>
+  <% end %>
+  <li class="status">Auction status: <strong><%= auction.state %></strong></li>
+  <li class="store-price">Store price: <strong><%= auction.store_price %> BGN</strong></li>
+  <li class="start-price">Start price: <strong><%= auction.start_price %> BGN</strong></li>
+  <li class="end-price">End price: <strong><%= auction.end_price %> BGN</strong></li>
+  <li class="current-price">Current price: <strong><%= auction.current_price %> BGN</strong></li>
+  <li class="start-quantity">Start quantity: <strong><%= auction.start_quantity %></strong></li>
+  <li class="current-quantity">Current quantity: <strong><%= auction.current_quantity %></strong></li>
+  <li class="minimum-users-per-product">Minimum users per product: <strong><%= auction.minimum_users_per_product %></strong></li>
+  <li class="maximum-users-per-product">Maximum users per product: <strong><%= auction.maximum_users_per_product %></strong></li>
+  <li class="time-for-purchase">Time for purchase: <strong><%= auction.time_for_purchase %> seconds</strong></li>
+  <li class="registered-users">Registered users: <strong><%= auction.users.count %></strong></li>
+  <li class="active-users">Active users: <strong>?</strong></li>
+  <li class="inactive-users">Inactive users: <strong>?</strong></li>
+</ul>
