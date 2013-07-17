@@ -6,3 +6,10 @@ deyan_dobrinov:
   surname:         Dobrinov
   email:           deyan.dobrinov@gmail.com
   password_digest: <%= password_digest %>
+
+competitor_dobrinov:
+  id: 2
+  name:            Competitor
+  surname:         Dobrinov
+  email:           competitor.dobrinov@gmail.com
+  password_digest: <%= password_digest %>
