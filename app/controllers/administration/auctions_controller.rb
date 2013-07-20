@@ -6,6 +6,11 @@ class Administration::AuctionsController < Administration::CommonController
 
   def show
     @auction = Auction.find(params[:id])
+
+    respond_to do |format|
+      format.html {}
+      format.js   {}
+    end
   end
 
   def new

@@ -1,0 +1,3 @@
+$('.auction-state').replaceWith('<%=j render partial: 'auctions/auction_state',  locals: { auction: @auction } %>');
+$('.auction').replaceWith('<%=j render partial: 'auctions/auction', locals: { auction: @auction } %>');
+$('.auction-actions').replaceWith('<%=j render partial: 'auction_actions', locals: { auction: @auction } %>');

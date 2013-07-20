@@ -2,7 +2,13 @@
   <li class="title"><h1><%= auction.title %></h1></li>
   <li class="description"><%= auction.description %></li>
   <% unless auction.unscheduled? %>
-    <li class="start-date">Auction starts: <strong><%= auction.start_datetime %></strong></li>
+    <li class="start-date">
+      Auction starts: <strong><%= auction.start_datetime %></strong>
+      <% if auction.scheduled? %>
+        ( starts in <%= auction.seconds_till_start/3600/24 %>d 
+        <%= Time.at(auction.seconds_till_start).gmtime.strftime('%Hh %Mmin %Ssec') %> )
+      <% end %>
+    </li>
   <% end %>
   <li class="store-price">Store price: <strong><%= auction.store_price %> BGN</strong></li>
   <li class="start-price">Start price: <strong><%= auction.start_price %> BGN</strong></li>

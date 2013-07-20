@@ -1,0 +1,10 @@
+<%= content_tag :div, class: 'auction-actions' do %>
+  <% @auction.state_events.each do |state| %>
+    <%= form_for [:administration, @auction],
+                  url: url_for(controller: 'auctions', action: state, auction_id: @auction.id),
+                  method: :put do |f|
+    %>
+      <%= f.submit state %>
+    <% end %>
+  <% end %>
+<% end %>
