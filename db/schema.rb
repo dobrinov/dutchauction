@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(:version => 20130709221319) do
   create_table "auction_participations", :force => true do |t|
     t.integer "user_id"
     t.integer "auction_id"
+    t.string  "state"
   end
 
   create_table "auctions", :force => true do |t|

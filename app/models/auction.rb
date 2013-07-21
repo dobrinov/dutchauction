@@ -60,6 +60,22 @@ class Auction < ActiveRecord::Base
   # Class methods
   # Instance methods
 
+  def active_users_count
+    auction_participations.active.count
+  end
+
+  def inactive_users_count
+    auction_participations.inactive.count
+  end
+
+  def users_count
+    auction_participations.count
+  end
+
+  def minimum_active_users_count
+    minimum_users_per_product * current_quantity
+  end
+
   def seconds_till_start
     (start_datetime - Time.now).to_i
   end

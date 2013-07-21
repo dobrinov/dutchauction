@@ -6,9 +6,9 @@ harry_potter_book_auction:
   current_price:             20
   end_price:                 10
   store_price:               21
-  start_quantity:            5
-  current_quantity:          5
-  minimum_users_per_product: 5
+  start_quantity:            1
+  current_quantity:          1
+  minimum_users_per_product: 2
   maximum_users_per_product: 10
   time_for_purchase:         180
   start_datetime:            <%= Time.now + 1.minute %>

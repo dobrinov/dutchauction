@@ -36,6 +36,12 @@ class AuctionParticipation < ActiveRecord::Base
 
   end
   
+  # Scopes
+  scope :registered, -> { where(state:  'registered') }
+  scope :active,     -> { where(state:  'active') }
+  scope :inactive,   -> { where(state: ['registered', 'in_purchase_workflow', 'canceled', 'bought', 'timed_out']) }
+
+
   # Validations
   # Class methods
   # Instance methods

@@ -10,16 +10,17 @@
       <% end %>
     </li>
   <% end %>
-  <li class="store-price">Store price: <strong><%= auction.store_price %> BGN</strong></li>
-  <li class="start-price">Start price: <strong><%= auction.start_price %> BGN</strong></li>
-  <li class="end-price">End price: <strong><%= auction.end_price %> BGN</strong></li>
-  <li class="current-price">Current price: <strong><%= auction.current_price %> BGN</strong></li>
+  <li class="store-price">Store price: <strong><%= '%.2f' % auction.store_price %> BGN</strong></li>
+  <li class="start-price">Start price: <strong><%= '%.2f' % auction.start_price %> BGN</strong></li>
+  <li class="end-price">End price: <strong><%= '%.2f' % auction.end_price %> BGN</strong></li>
+  <li class="current-price">Current price: <strong><%= '%.2f' % auction.current_price %> BGN</strong></li>
   <li class="start-quantity">Start quantity: <strong><%= auction.start_quantity %></strong></li>
   <li class="current-quantity">Current quantity: <strong><%= auction.current_quantity %></strong></li>
   <li class="minimum-users-per-product">Minimum users per product: <strong><%= auction.minimum_users_per_product %></strong></li>
   <li class="maximum-users-per-product">Maximum users per product: <strong><%= auction.maximum_users_per_product %></strong></li>
+  <li class="minimum-users-for-auction">Minimum users for auction: <strong><%= auction.minimum_active_users_count %></strong></li>
   <li class="time-for-purchase">Time for purchase: <strong><%= auction.time_for_purchase %> seconds</strong></li>
   <li class="registered-users">Registered users: <strong><%= auction.users.count %></strong></li>
-  <li class="active-users">Active users: <strong>?</strong></li>
-  <li class="inactive-users">Inactive users: <strong>?</strong></li>
+  <li class="active-users">Active users: <strong><%= auction.active_users_count %></strong></li>
+  <li class="inactive-users">Inactive users: <strong><%= auction.inactive_users_count %></strong></li>
 </ul>
