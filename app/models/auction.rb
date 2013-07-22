@@ -5,7 +5,7 @@ class Auction < ActiveRecord::Base
                   :minimum_users_per_product, :maximum_users_per_product,
                   :time_for_purchase, # in seconds
                   :start_datetime,
-                  :active_users_timeout
+                  :active_users_timeout, :wait_for_active_users_until
   # Associations
   has_many :purchases
 
@@ -44,7 +44,7 @@ class Auction < ActiveRecord::Base
     end
 
     event :terminate do
-      transition [:running] => :terminated
+      transition [:running, :waiting_for_active_users] => :terminated
     end
 
     event :sell_out do
@@ -77,7 +77,11 @@ class Auction < ActiveRecord::Base
   end
 
   def seconds_till_start
-    (start_datetime - Time.now).to_i
+    (start_datetime - Time.now).to_i.tap { |s| s > 0 ? s : 0 }
+  end
+
+  def seconds_till_end_due_not_enough_active_users
+    (wait_for_active_users_until - Time.now).to_i.tap { |s| s > 0 ? s : 0 }
   end
 
   private 

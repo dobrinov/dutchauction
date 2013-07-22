@@ -23,6 +23,8 @@ namespace :auction do
 
         if auction.minimum_active_users_count > auction.active_users_count
           auction.wait_for_active_users
+          auction.wait_for_active_users_until = Time.now + auction.active_users_timeout.seconds
+          auction.save!
         end
 
         # Update current price
@@ -40,6 +42,10 @@ namespace :auction do
       Auction.where(state: 'waiting_for_active_users').each do |auction|
         if auction.minimum_active_users_count <= auction.active_users_count
           auction.start
+        end
+
+        if auction.wait_for_active_users_until < Time.now
+          auction.terminate
         end
       end
 

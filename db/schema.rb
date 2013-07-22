@@ -22,20 +22,21 @@ ActiveRecord::Schema.define(:version => 20130709221319) do
   create_table "auctions", :force => true do |t|
     t.string   "title"
     t.string   "description"
-    t.decimal  "start_price",               :precision => 8, :scale => 2
-    t.decimal  "end_price",                 :precision => 8, :scale => 2
-    t.decimal  "current_price",             :precision => 8, :scale => 2
-    t.decimal  "store_price",               :precision => 8, :scale => 2
+    t.decimal  "start_price",                 :precision => 8, :scale => 2
+    t.decimal  "end_price",                   :precision => 8, :scale => 2
+    t.decimal  "current_price",               :precision => 8, :scale => 2
+    t.decimal  "store_price",                 :precision => 8, :scale => 2
     t.integer  "start_quantity"
     t.integer  "current_quantity"
     t.integer  "minimum_users_per_product"
     t.integer  "maximum_users_per_product"
     t.integer  "time_for_purchase"
     t.integer  "active_users_timeout"
+    t.datetime "wait_for_active_users_until"
     t.datetime "start_datetime"
     t.string   "state"
-    t.datetime "created_at",                                              :null => false
-    t.datetime "updated_at",                                              :null => false
+    t.datetime "created_at",                                                :null => false
+    t.datetime "updated_at",                                                :null => false
   end
 
   create_table "purchases", :force => true do |t|

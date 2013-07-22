@@ -20,6 +20,12 @@
   <li class="maximum-users-per-product">Maximum users per product: <strong><%= auction.maximum_users_per_product %></strong></li>
   <li class="minimum-users-for-auction">Minimum users for auction: <strong><%= auction.minimum_active_users_count %></strong></li>
   <li class="time-for-purchase">Time for purchase: <strong><%= auction.time_for_purchase %> seconds</strong></li>
+  <li class="active-users-timeout">
+    Active users timeout: <strong><%= auction.active_users_timeout %> seconds</strong>
+    <% if auction.waiting_for_active_users? %>
+      ( ends in <%= Time.at(auction.seconds_till_end_due_not_enough_active_users).gmtime.strftime('%Hh %Mmin %Ssec') %> )
+    <% end %>
+  </li>
   <li class="registered-users">Registered users: <strong><%= auction.users.count %></strong></li>
   <li class="active-users">Active users: <strong><%= auction.active_users_count %></strong></li>
   <li class="inactive-users">Inactive users: <strong><%= auction.inactive_users_count %></strong></li>

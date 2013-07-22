@@ -12,5 +12,5 @@ harry_potter_book_auction:
   maximum_users_per_product: 10
   time_for_purchase:         180
   start_datetime:            <%= Time.now + 1.minute %>
-  active_users_timeout:      300
+  active_users_timeout:      10
   state:                     unscheduled
