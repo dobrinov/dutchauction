@@ -3,22 +3,22 @@
     <% if current_user.registered_for?(auction) %> <%# Add user active in auction check %>
       <% if true %> <%# Add user active in auction check %>
         <% if auction.scheduled? %>
-          <li><%= button_to 'Waiting for auction to start...', '#', disabled: true %></li>
+          <%# Do not show anything %>
         <% elsif auction.running? %>
           <li><%= button_to 'Buy', reserve_auction_purchase_path(auction) %></li>
         <% elsif auction.waiting_for_active_users? %>
-          <li><%= button_to 'Waiting for enough active users...', '#', disabled: true %></li>
+          <%# Do not show anything %>
         <% elsif auction.reached_lowest_price? %>
-          <li><%= button_to 'Auction closed. Reached lowest price.', '#', disabled: true %></li>
+          <%# Do not show anything %>
         <% elsif auction.sold_out? %>
-          <li><%= button_to 'Auction closed. Products sold out.', '#', disabled: true %></li>
+          <%# Do not show anything %>
         <% elsif auction.terminated? %>
-          <li><%= button_to 'Auction terminated.', '#', disabled: true %></li>
+          <%# Do not show anything %>
         <% elsif auction.unscheduled? %>
           <%# Do not show anything %>
         <% end %>
       <% else %>
-        <li><%= button_to 'Your participation has ended', '', disabled: true %></li>
+        <%# Do not show anything %>
       <% end %>
     <% else %>
       <% if auction.scheduled? %>
