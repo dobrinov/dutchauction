@@ -1,7 +1,7 @@
 namespace :auction do
 
   desc "Rake taks managing the auction state and updates"
-  task :manage do
+  task :manage => :environment do
 
     loop do
 
