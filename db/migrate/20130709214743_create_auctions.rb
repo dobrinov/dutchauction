@@ -14,6 +14,10 @@ class CreateAuctions < ActiveRecord::Migration
       t.integer  :time_for_purchase
       t.integer  :active_users_timeout
 
+      t.decimal  :price_reduce_amount
+      t.integer  :price_reduce_pace
+      t.datetime :next_price_reduce_at
+
       t.datetime :wait_for_active_users_until
       t.datetime :start_datetime
 

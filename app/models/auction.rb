@@ -5,7 +5,8 @@ class Auction < ActiveRecord::Base
                   :minimum_users_per_product, :maximum_users_per_product,
                   :time_for_purchase, # in seconds
                   :start_datetime,
-                  :active_users_timeout, :wait_for_active_users_until
+                  :active_users_timeout, :wait_for_active_users_until,
+                  :price_reduce_amount, :price_reduce_pace, :next_price_reduce_at
   # Associations
   has_many :purchases
 
@@ -78,6 +79,14 @@ class Auction < ActiveRecord::Base
 
   def seconds_till_start
     (start_datetime - Time.now).to_i.tap { |s| s > 0 ? s : 0 }
+  end
+
+  def seconds_till_next_price_reduce
+    if next_price_reduce_at.nil?
+      0
+    else
+      (next_price_reduce_at - Time.now).to_i.tap { |s| s > 0 ? s : 0 }
+    end
   end
 
   def seconds_till_end_due_not_enough_active_users

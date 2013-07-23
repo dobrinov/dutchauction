@@ -14,3 +14,5 @@ harry_potter_book_auction:
   start_datetime:            <%= Time.now + 1.minute %>
   active_users_timeout:      10
   state:                     unscheduled
+  price_reduce_amount:       0.50
+  price_reduce_pace:         5

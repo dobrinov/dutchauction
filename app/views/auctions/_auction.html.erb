@@ -13,7 +13,12 @@
   <li class="store-price">Store price: <strong><%= '%.2f' % auction.store_price %> BGN</strong></li>
   <li class="start-price">Start price: <strong><%= '%.2f' % auction.start_price %> BGN</strong></li>
   <li class="end-price">End price: <strong><%= '%.2f' % auction.end_price %> BGN</strong></li>
-  <li class="current-price">Current price: <strong><%= '%.2f' % auction.current_price %> BGN</strong></li>
+  <li class="current-price">
+    Current price: <strong><%= '%.2f' % auction.current_price %> BGN</strong>
+    <% if auction.running? %>
+      ( next reduce <%= Time.at(auction.seconds_till_next_price_reduce).gmtime.strftime('%Hh %Mmin %Ssec') %> )
+    <% end %>
+  </li>
   <li class="start-quantity">Start quantity: <strong><%= auction.start_quantity %></strong></li>
   <li class="current-quantity">Current quantity: <strong><%= auction.current_quantity %></strong></li>
   <li class="minimum-users-per-product">Minimum users per product: <strong><%= auction.minimum_users_per_product %></strong></li>
