@@ -33,15 +33,24 @@
   <br/><br/>
 
   <%= f.label :time_for_purchase %>
-  <%= f.text_field :time_for_purchase %>
+  <%= f.text_field :time_for_purchase %> (seconds)
   <br/><br/>
 
   <%= f.label :active_users_timeout %>
-  <%= f.text_field :active_users_timeout %>
+  <%= f.text_field :active_users_timeout %> (seconds)
+  <br/><br/>
+
+  <%= f.label :price_reduce_amount %>
+  <%= f.text_field :price_reduce_amount %> (stotinki)
+  <br/><br/>
+
+  <%= f.label :price_reduce_pace %>
+  <%= f.text_field :price_reduce_pace %> (seconds)
   <br/><br/>
 
   <%= f.label           :start_datetime %>
   <%= f.datetime_select :start_datetime %>
+  <br/><br/>
 
   <%= f.submit :create %>
 <% end %>
