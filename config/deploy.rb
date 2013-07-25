@@ -23,3 +23,13 @@ set :use_sudo, false
 
 ssh_options[:forward_agent] = true
 default_run_options[:shell] = '/bin/bash --login'
+default_run_options[:pty] = true
+
+namespace :nginx do
+  %w[start stop restart].each do |command|
+    desc "#{command} nginx"
+    task command, roles: :web do
+      run "#{sudo} service nginx #{command}"
+    end
+  end
+end
