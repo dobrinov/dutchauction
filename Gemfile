@@ -3,7 +3,6 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.13'
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'redirectr',   '~> 0.0.8'
-gem 'puma'
 
 gem 'state_machine'
 gem 'ruby-graphviz', require: 'graphviz'
@@ -19,6 +18,7 @@ end
 
 group :production do
   gem 'pg'
+  gem 'puma', '2.0.1'
 end
 
 group :assets do

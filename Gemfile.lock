@@ -62,7 +62,7 @@ GEM
       net-ssh (>= 2.6.5)
     pg (0.16.0)
     polyglot (0.3.3)
-    puma (2.4.0)
+    puma (2.0.1)
       rack (>= 1.1, < 2.0)
     rack (1.4.5)
     rack-cache (1.2)
@@ -121,7 +121,7 @@ DEPENDENCIES
   capistrano
   jquery-rails
   pg
-  puma
+  puma (= 2.0.1)
   rails (= 3.2.13)
   redirectr (~> 0.0.8)
   ruby-graphviz
